@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.config.JwtUtils;
+import com.exam.helper.UserNotFoundException;
 import com.exam.model.JwtRequest;
 import com.exam.model.JwtResponse;
 import com.exam.model.User;
@@ -44,7 +45,7 @@ public class AuthenticateController {
 			
 			authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 			
-		}catch(UsernameNotFoundException e) {
+		}catch(UserNotFoundException e) {
 			e.printStackTrace();
 			throw new Exception("User not found");
 		}
